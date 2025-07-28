@@ -14,7 +14,8 @@ typedef struct Matrix
 
 
 Matrix* matrix_Constructor(int rows, int cols);
-void matrix_Free(const Matrix *A);
+void matrix_filler(Matrix* matrix);
+void matrix_Destructor(Matrix *A);
 
 void matrix_print(const Matrix *A);
 

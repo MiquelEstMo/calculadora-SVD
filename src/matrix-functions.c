@@ -1,49 +1,73 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "matrix-functions.h"
 
 Matrix* matrix_Constructor(int rows, int cols){
 
-    Matrix *nova_matriu = (Matrix *)malloc(sizeof(Matrix));
+    Matrix *new_matrix = (Matrix *)malloc(sizeof(Matrix));
 
-    nova_matriu->cols = cols;
-    nova_matriu->rows = rows;
+    new_matrix->cols = cols;
+    new_matrix->rows = rows;
 
-    nova_matriu->data = (int**) malloc(sizeof(int*) * rows);
+    new_matrix->data = (int**) malloc(sizeof(int*) * rows);
 
     for (int i = 0; i < rows; i++){
-        nova_matriu->data[i] = (int*) malloc(sizeof(int) * cols);
+        new_matrix->data[i] = (int*) malloc(sizeof(int) * cols);
     }
 
-    return nova_matriu;
+    printf("[SUCCESS!!]: Matrix created succesfully\n");
+
+    return new_matrix;
 
 }
 
-void matrix_Free(const Matrix *A){
+void matrix_filler(Matrix* matrix){
 
-    if (A != NULL){
-        return;
+    int data = 0;
+
+    for (int i = 0; i < matrix->rows; i++){
+
+        for (int j = 0; j < matrix->cols; j++){
+
+            printf("Insert value [%d][%d]: ", i, j );
+            scanf("%d", &data);
+
+            matrix->data[i][j] = data;
+
+        }
+
     }
 
-    for (int i = 0; i < A->rows; i++){
-        free(A->data[i]);
-    }
-    free(A);
+    printf("\n");
+}
 
+void matrix_Destructor(Matrix* matrix) {
+
+    if (matrix != NULL) {
+
+        for (int i = 0; i < matrix->rows; i++) {
+            free(matrix->data[i]);
+        }
+
+        free(matrix->data);
+        free(matrix);
+    }
 }
 
 void matrix_print(const Matrix *A){
-
-     if (A != NULL){
+    if (A == NULL){
+        printf("[ERROR!]: Matrix is NULL\n");
         return;
     }
-
+    
     for (int i = 0; i < A->rows; i++){
-        for (int j = 0; i < A->cols; i++){
-            printf("%d", A->data[i][j]);
+        for (int j = 0; j < A->cols; j++){
+            printf("%4d ", A->data[i][j]);
         }
+        printf("\n");
     }
-
+    printf("\n");
 }
 
 Matrix* matrix_Multiplicate(const Matrix *A, const Matrix *B){
