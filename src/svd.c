@@ -13,6 +13,5 @@ Matrix *SVD(Matrix *A){
     matrix_print(C1);
     printf("\n MATRIU C2:\n");
     matrix_print(C2);
-
     
 }
