@@ -6,13 +6,13 @@
 typedef struct MatrixSVD
 {
 
-    Matrix* U;           // Matriu U (m x m)
-    Matrix* S;           // Matiu valors Singulars (diagonal)
-    Matrix* VT;          // Matriu V trasposada (n x n)
+    Matrix *U;  // Matriu U (m x m)
+    Matrix *S;  // Matiu valors Singulars (diagonal)
+    Matrix *VT; // Matriu V trasposada (n x n)
 
-}MatrixSVD;
+} MatrixSVD;
 
-MatrixSVD* SVD_Calculate(const Matrix *A);
+MatrixSVD *SVD_Calculate(const Matrix *A);
 void SVD_Free(MatrixSVD *result);
 
 #endif // SVD_H

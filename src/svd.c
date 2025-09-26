@@ -1,6 +1,7 @@
 #include "matrix-functions.h"
 
-Matrix *SVD(Matrix *A){
+Matrix *SVD(Matrix *A)
+{
 
     // Pas 1: Calcular C1 i C2
 
@@ -13,5 +14,4 @@ Matrix *SVD(Matrix *A){
     matrix_print(C1);
     printf("\n MATRIU C2:\n");
     matrix_print(C2);
-    
 }
